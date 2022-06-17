@@ -26,13 +26,13 @@ body::after{
     margin: 20px;
 
     font-family: 'Cursed Timer ULiL';
-    font-size: 90px;
+    font-size: 100px;
     color: #F94F6D;
     
     
     top: 125px;
     font-weight: 400;
-    line-height: 127px;
+    line-height: 135px;
 }
 
 .container {
@@ -47,15 +47,12 @@ body::after{
 
 .button{
     background: none;
-    box-sizing: border-box;
-    
-    
-
+    text-align: center;
     border: 2px solid #0a2674;
     border-radius: 5px;
+
     
-    width: 30px;
-    left: 89px;
+
     top: 280px;
 
     font-family: 'Cursed Timer ULiL';
@@ -63,17 +60,19 @@ body::after{
     font-weight: 400;
     font-size: 18px;
     line-height: 28px;
-    text-align: center;
+    
     color: #0a2674;
 }
 
 .buttonPA{
     background-color: yellow;
     position: relative;
-    float: left;
+    text-align: center;
     
-    top: 300;
-    right: 400;
+    
+    top: 350px;
+    left: 12;
+    
     
     
     font-family: 'Times New Roman';
