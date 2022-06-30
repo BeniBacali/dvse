@@ -1,14 +1,23 @@
 body {
+    width: 100%;
+    height: 100%;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', Arial, sans-serif;
-    background-image: url("blackjack.jpg");
+    background-image: url("blackjack1.jpg");
     background-size: cover;
     font-weight: bold;
     color: white;
     text-align: center;
+    
+}
+
+.container{
+    width: 100%;
+    height: 100%;
 }
 
 h1 {
     color: goldenrod;
+    
 }
 
 #message-el {
@@ -26,4 +35,5 @@ button {
     border-radius: 2px;
     margin-bottom: 2px;
     margin-top: 2px;
+    
 }

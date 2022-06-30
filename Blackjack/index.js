@@ -16,6 +16,9 @@ let playerEl = document.getElementById("player-el")
 
 playerEl.textContent = player.name + ": $" + player.chips
 
+//let showBtn = document.querySelector("start-game-btn")
+//showBtn.disabled = true
+
 function getRandomCard() {
     let randomNumber = Math.floor( Math.random()*13 ) + 1
     if (randomNumber > 10) {
@@ -53,6 +56,8 @@ function renderGame() {
     sumEl.textContent = "Sum: " + sum
     if (sum <= 20) {
         message = "Do you want to draw a new card?"
+        //document.getElementById("start-game-btn").ariaDisabled("true")
+        
     } else if (sum === 21) {
         message = "You've got Blackjack!"
         matchStarted = false
