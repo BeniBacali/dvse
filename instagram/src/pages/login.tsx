@@ -1,17 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { FirebaseContext } from '../context/firebase';
+import React, { useEffect, useState,useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 
+
 export default function Login() {
+    const firebase = useContext(FirebaseContext) as any
     useEffect(() => {
         document.title = 'Login - Instagram';
     }, []);
+
+    const history = useHistory();
 
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
     
     const [error, setError] = useState('');
     const isInvalid = password === '' || emailAddress === '';
+
+    const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        
+        try {
+            await firebase.firebaseInit.firebase_.auth().signInWithEmailAndPassword(emailAddress, password);
+            history.push(ROUTES.DASHBOARD);
+        } catch (error) {
+            setEmailAddress('');
+            setPassword('');
+            setError('');
+            if(error instanceof Error){
+                setError(error.message)
+            }   
+        }
+    }
     
     return (
         <div className="container flex mx-auto max-w-screen-md items-center h-screen">
@@ -23,8 +44,9 @@ export default function Login() {
                 <h1 className="flex justify-center w-full">
                     <img src="/images/logo.png" alt="Instagram" className="mt-2 w-6/12 mb-4" />
                 </h1>
+                {error && <p className="mb-4 text-xs text-red-500">{error}</p>}
                 
-                <form>
+                <form onSubmit={handleLogin}    >
                     <input
                         aria-label="Enter your email address"
                         className="text-sm w-full mr-3 py-5 px-4 h-2 border rounded mb-2"
@@ -40,6 +62,7 @@ export default function Login() {
                         onChange={({ target }) => setPassword(target.value)}
                     />
                     <button
+                        disabled={isInvalid}
                         type="submit"
                         className={`bg-blue-500 text-white w-full rounded h-8 font-bold ${ isInvalid && 'cursor-not-allowed opacity-50'}`}
                     >
