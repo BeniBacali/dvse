@@ -1,4 +1,3 @@
-import firebase from 'firebase'
 //import { seedDatabase } from '../seed';
 
 const config: {
@@ -17,9 +16,9 @@ const config: {
     appId: "1:968692059644:web:2ec10d94402b6dc3d17679",
   };
 
-const firebaseInit = firebase.initializeApp(config)
-const FieldValue = firebase.firestore(firebaseInit);
+const firebaseInit = window.firebase.initializeApp(config)
+const {FieldValue} = window.firebase.firestore;
 
 //seedDatabase(firebaseInit)
 
-export { firebaseInit as firebase, FieldValue };
+export { firebaseInit, FieldValue };

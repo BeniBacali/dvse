@@ -1,7 +1,7 @@
 import {app} from 'firebase'
-import { firebase } from "./lib/firebase";
+import { firebaseInit } from "./lib/firebase";
 
-export async function seedDatabase(firebaseInit: firebase.app.App) {
+export async function seedDatabase() {
     const users = [
       {
         userId: 'fQxKrFoskoaNlKVZ570TwtwAPC22',
@@ -42,12 +42,12 @@ export async function seedDatabase(firebaseInit: firebase.app.App) {
     ];
   
     for (let k = 0; k < users.length; k++) {
-      firebase.firestore().collection('users').add(users[k]);
+      firebaseInit.firestore().collection('users').add(users[k]);
     }
   
     for (let i = 1; i <= 5; ++i) {
       //const response = await firebase
-      firebase
+      firebaseInit
         .firestore()
         .collection('photos')
         .add({
